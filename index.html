@@ -141,10 +141,14 @@
     .hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
     .hstat {
       border-left: 2px solid var(--red); padding-left: 1rem;
+      transition: border-color .3s;
     }
+    .hstat:hover { border-left-color: var(--amber); }
+    .hstat:hover .hstat-v { color: var(--amber); }
     .hstat-v {
       font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
       font-size: 1.9rem; line-height: 1; color: var(--white);
+      transition: color .3s;
     }
     .hstat-l {
       font-family: 'JetBrains Mono', monospace; font-size: .6rem;
@@ -168,9 +172,9 @@
       border: 1.5px solid var(--border);
       padding: 14px 32px; text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
-      transition: border-color .2s, color .2s;
+      transition: border-color .2s, color .2s, transform .2s;
     }
-    .btn-s:hover { border-color: var(--w30); color: var(--white); }
+    .btn-s:hover { border-color: var(--w30); color: var(--white); transform: translateY(-2px); }
 
     /* Hero photo */
     .hero-photo {
@@ -189,7 +193,9 @@
     .hero-photo img {
       width: 100%; height: 100%; object-fit: cover;
       object-position: 50% 0%; display: block;
+      transition: transform 8s ease-out;
     }
+    .hero-photo:hover img { transform: scale(1.04); }
     .hero-glow {
       position: absolute; top: 15%; right: 15%; z-index: 1;
       width: 420px; height: 420px; border-radius: 50%;
@@ -259,13 +265,34 @@
     }
     .sc-sub { color: var(--muted); font-size: .85rem; margin-top: 4px; }
 
+    /* Highlighted cards (Família + Objetivo) */
+    .sc--highlight {
+      padding: 2.25rem; border-color: rgba(224,32,32,.25);
+      background: linear-gradient(135deg, var(--bg-3) 0%, rgba(224,32,32,.06) 100%);
+    }
+    .sc--highlight .sc-val {
+      font-size: 2.4rem; font-weight: 900; line-height: 1;
+    }
+    .sc--highlight .sc-sub {
+      font-size: 1.05rem; margin-top: 6px; color: var(--w70);
+    }
+    .sc--highlight::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--red);
+    }
+    .sc--highlight { position: relative; overflow: hidden; }
+
     /* ── EXPERIÊNCIA ── */
     .timeline { position: relative; padding-left: 2rem; }
     .timeline::before {
       content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
       background: linear-gradient(180deg, var(--red), transparent);
     }
-    .tl-item { position: relative; padding-left: 2.5rem; margin-bottom: 4rem; }
+    .tl-item {
+      position: relative; padding-left: 2.5rem; margin-bottom: 4rem;
+      transition: transform .3s;
+    }
+    .tl-item:hover { transform: translateX(6px); }
     .tl-item::before {
       content: ''; position: absolute; left: -2rem; top: .6rem;
       width: 10px; height: 10px; border-radius: 50%; background: var(--red);
@@ -467,7 +494,8 @@
       text-decoration: none; font-size: .95rem; display: inline-block;
       transition: background .2s;
     }
-    .cta-btn:hover { background: #f0f0f0; }
+    .cta-btn:hover { background: #f0f0f0; transform: translateY(-2px); }
+    .cta-btn { transition: background .2s, transform .2s; }
 
     /* ── FOOTER ── */
     #foot {
@@ -632,12 +660,12 @@
               "Integrar a Regulação de Urgência e Emergência do SAMU Curitiba, aplicando habilidades em avaliação de cenários críticos, comunicação operacional e trabalho em equipe, visando à segurança do paciente e à eficiência do atendimento."
             </p>
           </div>
-          <div class="sc">
+          <div class="sc sc--highlight">
             <p class="sc-tag">// Família</p>
-            <div class="sc-val">Pai</div>
-            <p class="sc-sub">da Jade 💕</p>
+            <div class="sc-val">Pai da Jade</div>
+            <p class="sc-sub">Minha maior motivação 💕</p>
           </div>
-          <div class="sc">
+          <div class="sc sc--highlight">
             <p class="sc-tag">// Próximo Objetivo</p>
             <div class="sc-val">SAMU Curitiba</div>
             <p class="sc-sub">Regulação de Urgência e Emergência</p>
